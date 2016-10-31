@@ -6,7 +6,7 @@
         xmlns:ignore="http://www.galasoft.ch/ignore"
         mc:Ignorable="d ignore"
         Height="700"
-        Width="700"
+        Width="1000"
         Title="MVVM Light Application"
         DataContext="{Binding Main, Source={StaticResource Locator}}">
 
@@ -18,19 +18,35 @@
         </ResourceDictionary>
     </Window.Resources>
     <Grid x:Name="LayoutRoot">
-        <Button Content="{Binding ButtonContent}"
+        <DockPanel>
+            <Button DockPanel.Dock="Top"
+                Content="{Binding ButtonContent}"
 		HorizontalAlignment="Left"
 		Margin="10,10,0,0"
 		VerticalAlignment="Top"
 		Width="75"
 		Command="{Binding MyCommand}" />
-        <Button Content="{Binding ButtonStartCrawlContent }" 
-                HorizontalAlignment="Left"
-		Margin="100,10,0,0"
-		VerticalAlignment="Top"
-		Width="75" Command="{Binding StartCrawlCommand}"/>
-
-        <TextBox
+            <Grid DockPanel.Dock="Top">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">Lokal mappe:</Label>
+                <TextBox Grid.Row="0" Grid.Column="0"  Margin="100,10,0,0" Width="275" HorizontalAlignment="Left" Text="{Binding LocalFolder}"/>
+                <Label Grid.Row="1" Grid.Column="1" Margin="10,10,0,0">Max Pages:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" Margin="100,10,0,0" Width="275" HorizontalAlignment="Left" Text="{Binding MaxPages}"/>
+                <Label Grid.Row="1" Grid.Column="0" Margin="10,10,0,0">Max Dybde:</Label>
+                <TextBox  Grid.Row="1" Grid.Column="0" Margin="100,10,0,0" Width="275" HorizontalAlignment="Left" Text="{Binding MaxDepth}"/>
+                <Button Grid.Row="2" Grid.Column="0" Content="{Binding ButtonStartCrawlContent }" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75" Command="{Binding StartCrawlCommand}"/>
+                <TextBox Grid.Row="2" Grid.Column="0" Margin="100,10,0,0" Width="275" HorizontalAlignment="Left" Text="{Binding CrawlUrl}"/>
+            </Grid>
+            
+            <TextBox DockPanel.Dock="Bottom"
                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                 ScrollViewer.VerticalScrollBarVisibility="Auto" 
                  FontSize="16"
@@ -39,7 +55,9 @@
                    Text="{Binding WelcomeTitle}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
-                   TextWrapping="Wrap" />
+                   TextWrapping="Wrap" 
+                 Width="Auto" Height="Auto"/>
+        </DockPanel>
     </Grid>
 </Window>
 
