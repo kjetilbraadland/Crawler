@@ -29,14 +29,17 @@
 		Margin="100,10,0,0"
 		VerticalAlignment="Top"
 		Width="75" Command="{Binding StartCrawlCommand}"/>
-        <TextBlock FontSize="36"
+
+        <TextBox
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                ScrollViewer.VerticalScrollBarVisibility="Auto" 
+                 FontSize="16"
                    FontWeight="Bold"
                    Foreground="Purple"
                    Text="{Binding WelcomeTitle}"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Center"
                    TextWrapping="Wrap" />
-
     </Grid>
 </Window>
 

@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using GalaSoft.MvvmLight;
 using Crawler.Model;
+using Crawler.Model.Abot;
 using GalaSoft.MvvmLight.Command;
 
 namespace Crawler.ViewModel
@@ -87,7 +88,15 @@ namespace Crawler.ViewModel
 
         private void ExecuteStartCrawlCommand()
         {
+            Model.Abot.AbotManager m = new AbotManager();
+            m.MessageUpdate += M_MessageUpdate;
+            WelcomeTitle = string.Empty;
+            m.RunCrawl();
+        }
 
+        private void M_MessageUpdate(object sender, MessageEventArgs args)
+        {
+            WelcomeTitle += "\n" + args.Message;
         }
 
         private bool _canExecuteStartCrawl()
